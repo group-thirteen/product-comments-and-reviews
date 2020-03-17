@@ -20,7 +20,7 @@ const seed = () => {
       username: faker.name.firstName() + faker.name.lastName(),
       body: faker.random.words(20),
       score: (Math.floor(Math.random() * 5) + 1),
-      data: faker.date.past(20)
+      date: faker.date.past(20)
     })
     newReview.save((err) => {
       if (err) {

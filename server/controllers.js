@@ -14,4 +14,21 @@ const get = (req, res) => {
   })
 }
 
-module.exports = { get }
+const post = (req, res) => {
+  console.log('in the controller', req.body)
+  db.store(req.body, (err) => {
+    if(err) {
+      res.send(400)
+    } else {
+      db.get((err, data) =>{
+        if(err) {
+          res.send(400)
+        } else {
+          res.send(data)
+        }
+      })
+    }
+  })
+}
+
+module.exports = { get, post }

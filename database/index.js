@@ -1,7 +1,8 @@
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/nordstromPrac')
-// const faker = require('faker')
+const dateFormat = require('dateformat');
+const now = new Date();
 
 var reviewSchema = mongoose.Schema({
   title: String,
@@ -21,8 +22,13 @@ const get = (callback) => {
 }
 
 const Review = mongoose.model('Review', reviewSchema)
-const store = (callback) => {
+const store = (review, callback) => {
   const newReview = new Review({
+    title: review.title,
+    username: review.username,
+    body: review.body,
+    score: review.rating,
+    date: dateFormat(now, 'isoDateTime')
   })
   newReview.save((err) => {
     if (err) {

@@ -14,4 +14,10 @@ app.get('/reviews', function (req, res) {
   Controller.get(req, res)
 })
 
+app.post('/reviews', (req, res) => {
+  console.log('in the index', req.body)
+
+  Controller.post(req, res)
+})
+
 app.listen(port, () => console.log(`Running on port: ${port}`))
