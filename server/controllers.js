@@ -1,4 +1,3 @@
-// forward the incoming request to the proper location for db access
 
 const db = require('../database/index.js')
 

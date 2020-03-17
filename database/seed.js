@@ -12,7 +12,7 @@ const reviewSchema = mongoose.Schema({
 })
 const Review = mongoose.model('Review', reviewSchema)
 
-// implement a check if DB exsists, dont run post request to seed the data, refactor this
+// implement check if DB exsists
 const seed = () => {
   for (let j = 0; j < 100; j++) {
     const newReview = new Review({
