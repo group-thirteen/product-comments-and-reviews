@@ -1,13 +1,23 @@
 
 .star-background {
-  color:grey;
-  height: 24px;
-  width: 500px;
-  background-color: blue;
+  color:white;
+  height: 16px;
+  width: 200px;
+  background-color: rgb(251, 251, 255);
+  border: 1px solid black;
+  display: inline-block;
 }
 
 .star-bar {
-  background-color: burlywood;
+  background-color: darkgreen;
+  height: 16px;
 }
 
+.starbar-labels {
+  vertical-align: top;
+}
+
+.starbar-container {
+  margin-bottom: 12px
+}
 

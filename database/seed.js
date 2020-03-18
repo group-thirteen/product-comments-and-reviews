@@ -14,7 +14,7 @@ const Review = mongoose.model('Review', reviewSchema)
 
 // implement check if DB exsists
 const seed = () => {
-  for (let j = 0; j < 100; j++) {
+  for (let j = 0; j < 20; j++) {
     const newReview = new Review({
       title: faker.random.words(8),
       username: faker.name.firstName() + faker.name.lastName(),

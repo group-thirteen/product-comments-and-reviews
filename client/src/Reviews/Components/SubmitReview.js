@@ -14,7 +14,6 @@ class SubmitReview extends React.Component {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleBodyChange = this.handleBodyChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 

@@ -3,7 +3,7 @@ import 'react-dropdown/style.css'
 import React from 'react'
 import Dropdown from 'react-dropdown'
 const options = [
-  'one', 'two', 'three', 'four', 'five'
+  1, 2, 3, 4, 5, 'ALL'
 ]
 const defaultOption = options[0]
 
@@ -16,8 +16,9 @@ class SortBy extends React.Component {
     this.onSelect = this.onSelect.bind(this)
   }
 
-  onSelect (option) {
-    console.log('changed', option.value)
+  onSelect (rating) {
+    console.log(rating)
+    this.props.handleRatingSelection(rating)
   }
 
   render () {
