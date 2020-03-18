@@ -14,7 +14,9 @@ class SortReviews extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('dropdown selection:', this.state.value);
+    console.log('value in sort sub ', this.state.value)
+    if(this.state.value === 'stars') { this.props.starSortFunc() }
+    if(this.state.value === 'time') { this.props.timeSortFunc() }
     event.preventDefault();
   }
 

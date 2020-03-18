@@ -3,7 +3,7 @@ import { ajax } from 'jquery'
 import Title from './Title'
 import ReviewList from './Reviews/Components/ReviewList.js'
 import AverageRating from './Reviews/Components/AverageRating.js'
-import SortBy from './Reviews/Components/SortBy.js'
+import FilterReviews from './Reviews/Components/FilterReviews.js'
 import StarOverview from './Reviews/Components/StarOverview.js'
 import SubmitReview from './Reviews/Components/SubmitReview.js'
 import SortReviews from './Reviews/Components/SortReviews.js'
@@ -17,20 +17,21 @@ class Reviews extends React.Component {
       stars: {},
       filteredReviews: null,
       showForm: false,
-      starSorted: null,
-      timeSorted: null
     }
     this.get = this.get.bind(this)
     this.handleNewReviews = this.handleNewReviews.bind(this)
     this.getRatingTotal = this.getRatingTotal.bind(this)
     this.post = this.post.bind(this)
     this.handleRatingSelection = this.handleRatingSelection.bind(this)
+    this.sortStarRating = this.sortStarRating.bind(this)
+    this.sortByTime = this.sortByTime.bind(this)
   }
 
   componentDidMount () {
     this.get()
-  }
 
+  }
+  
   get () {
     ajax({
       method: 'GET',
@@ -76,36 +77,46 @@ class Reviews extends React.Component {
   }
 
   handleRatingSelection (rating) {
-
     const filtered = this.state.reviews.filter((review) => (
-      (rating.value === 'ALL') || (review.score === rating.value)
+      (rating === 0) || (review.score === rating)
       ))
     this.setState({ filteredReviews: filtered })
   }
   
-  sortStarRating(reviews) {
-    const sorted = reviews.sort(function compare(a, b) {
-      if (a.rating < b.rating) {
-        return -1;
+  sortStarRating() {
+    const sorted = this.state.reviews.sort((a, b) => {
+      if (a.score < b.score) {
+        return -1
       }
-      if (a.rating > b.rating) {
-        return 1;
+      if (a.score > b.score) {
+        console.log('A RATING in star sort', a)
+        return 1
       }
-      return 0;
+      return 0
     })
-    this.setState({ starSorted: sorted })
+    this.setState({ reviews: sorted })
   }
+
   sortByTime () {
-    
+    const sorted = this.state.reviews.sort((a, b) => {
+      if (a.date < b.date) {
+        return -1
+      }
+      if (a.date > b.date) {
+        return 1
+      }
+      return 0
+    })
+    this.setState({ reviews: sorted })
   }
 
   render () {
     return (
       <div>
-        <SortBy handleRatingSelection={this.handleRatingSelection}/>
+        <FilterReviews handleRatingSelection={this.handleRatingSelection}/>
         <StarOverview stars={this.state.stars} reviewTotal={this.state.reviews.length} />
         <Title />
-        <SortReviews starSort={this.state.starSorted} timeSort={this.state.timeSorted}/>
+        <SortReviews starSortFunc={this.sortStarRating} timeSortFunc={this.sortByTime} />
         {!this.state.showForm && <button onClick={() => (this.setState({showForm: true}))}>Write a Review</button>}
         {this.state.showForm && <SubmitReview post={ this.post }/>}
         <AverageRating average={ this.state.average } />

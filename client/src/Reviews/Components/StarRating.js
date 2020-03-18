@@ -6,7 +6,7 @@ const StarRating = (props) => {
   const { reviewTotal, rating, starNumber } = props
   let style = {width: `${(rating/reviewTotal) * 100}%`}
   return (
-    <div>
+    <div className='starbar-container'>
       <span className='starbar-labels'>
       {starNumber}
       </span>

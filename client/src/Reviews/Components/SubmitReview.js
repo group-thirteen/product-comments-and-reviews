@@ -8,6 +8,7 @@ class SubmitReview extends React.Component {
       title: '',
       body: '',
       rating: '',
+      date: Date.now()
     };
 
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
