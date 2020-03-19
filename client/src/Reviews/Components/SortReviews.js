@@ -22,7 +22,7 @@ class SortReviews extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='sort-form' onSubmit={this.handleSubmit}>
         <label>
           Sort reviews:
           <select value={this.state.value} onChange={this.handleChange}>

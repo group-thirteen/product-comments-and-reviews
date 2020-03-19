@@ -2,7 +2,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import Title from './Title'
-const title = 'Test Title'
+const title = 'Fake Item'
 
 let wrapped = shallow(<Title>{title}</Title>)
 describe('Title', () => {

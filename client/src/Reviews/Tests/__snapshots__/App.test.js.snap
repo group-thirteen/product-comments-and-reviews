@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render and have correct state 1`] = `
+<div>
+  <FilterReviews
+    handleRatingSelection={[Function]}
+  />
+  <StarOverview
+    reviewTotal={3}
+    stars={
+      Object {
+        "1": 1,
+        "2": 0,
+        "3": 1,
+        "4": 0,
+        "5": 1,
+      }
+    }
+  />
+  <Title />
+  <SortReviews
+    starSortFunc={[Function]}
+    timeSortFunc={[Function]}
+  />
+  <button
+    onClick={[Function]}
+  >
+    Write a Review
+  </button>
+  <AverageRating
+    average={3}
+  />
+  <ReviewList
+    reviews={
+      Array [
+        Object {
+          "body": "body1",
+          "date": 10,
+          "score": 1,
+          "title": "title1",
+          "username": "username1",
+        },
+        Object {
+          "body": "body2",
+          "date": 20,
+          "score": 5,
+          "title": "title2",
+          "username": "2",
+        },
+        Object {
+          "body": "body3",
+          "date": 30,
+          "score": 3,
+          "title": "title3",
+          "username": "username3",
+        },
+      ]
+    }
+  />
+</div>
+`;

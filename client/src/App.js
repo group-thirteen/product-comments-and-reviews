@@ -29,7 +29,6 @@ class Reviews extends React.Component {
 
   componentDidMount () {
     this.get()
-
   }
   
   get () {
@@ -89,7 +88,6 @@ class Reviews extends React.Component {
         return -1
       }
       if (a.score > b.score) {
-        console.log('A RATING in star sort', a)
         return 1
       }
       return 0
