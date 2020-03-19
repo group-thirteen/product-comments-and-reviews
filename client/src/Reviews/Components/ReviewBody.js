@@ -4,7 +4,7 @@ import React from 'react'
 
 const ReviewBody = (props) => {
   return (
-    <div className='review-body'>
+    <div className='reviewBody'>
       {props.body}
     </div>
   )

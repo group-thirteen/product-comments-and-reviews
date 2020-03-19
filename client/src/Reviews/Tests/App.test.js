@@ -3,12 +3,6 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import App from '../../App.js'
 import { createSerializer } from 'enzyme-to-json'
-import dummyData from './dummydata.js'
-
-// const ajaxSpy = jest.fn((options) => {
-//   console.log(options)
-//   return dummyData
-// })
 
 jest.mock('jquery', () => ({ ajax: jest.fn((options) => {
 
@@ -62,11 +56,9 @@ describe('App', () => {
     const select = form.find('select')
     select.simulate('change', {target: {value: 'stars'}})
     select.simulate('submit', {})
-    // console.log('reviews',wrapper.state().reviews)
     expect(wrapper.state().reviews[2].title).toEqual('title2')
     select.simulate('change', {target: {value: 'time'}})
     select.simulate('submit', {})
-    // console.log('reviews',wrapper.state().reviews)
     expect(wrapper.state().reviews[2].title).toEqual('title3')
   })
   // it('should', () => {})

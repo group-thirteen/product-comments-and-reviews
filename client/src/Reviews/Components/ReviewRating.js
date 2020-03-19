@@ -3,7 +3,7 @@ import React from 'react'
 
 const ReviewRating = (props) => {
   return (
-    <div className='review-rating'>
+    <div className='reviewRating'>
       {props.rating}
     </div>
   )

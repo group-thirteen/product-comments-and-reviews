@@ -2,7 +2,7 @@ import React from 'react'
 const Title = (props) => (
   <div>
     <h1>
-      Fake Item
+      Leather Jacket
     </h1>
   </div>
 )

@@ -18,6 +18,16 @@
 }
 
 .starbar-container {
-  margin-bottom: 12px
+  margin-bottom: 12px;
+}
+
+.review {
+  border-bottom: 1px solid black;
+  padding: 12px;
+}
+
+.reviewTitle {
+  margin-bottom: 12px;
+  font-weight: bold;
 }
 
