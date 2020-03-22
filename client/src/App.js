@@ -49,7 +49,7 @@ class Reviews extends React.Component {
       method: 'POST',
       url: '/reviews',
       data: review,
-      success: () => {console.log('posted review')},
+      success: () => { this.get() },
       error: () => {console.log('error in the post')}
     })  
   }
@@ -62,6 +62,8 @@ class Reviews extends React.Component {
     const average = sum / reviews.length
     this.getRatingTotal(reviews)
     this.setState({ average, reviews })
+    this.sortByTime()
+    
   }
 
   getRatingTotal (reviews) {
@@ -87,10 +89,10 @@ class Reviews extends React.Component {
   
   sortStarRating() {
     const sorted = this.state.reviews.sort((a, b) => {
-      if (a.score < b.score) {
+      if (a.score > b.score) {
         return -1
       }
-      if (a.score > b.score) {
+      if (a.score < b.score) {
         return 1
       }
       return 0
@@ -100,10 +102,10 @@ class Reviews extends React.Component {
 
   sortByTime () {
     const sorted = this.state.reviews.sort((a, b) => {
-      if (a.date < b.date) {
+      if (a.date > b.date) {
         return -1
       }
-      if (a.date > b.date) {
+      if (a.date < b.date) {
         return 1
       }
       return 0

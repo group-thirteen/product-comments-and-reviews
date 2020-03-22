@@ -18,8 +18,8 @@ class FilterReviews extends React.Component {
     return (
       <form className='filter-form'>
         <label>
-          Filter rating:
           <select value={this.state.value} onChange={this.handleChange} >
+            <option value={0}>star rating</option>
             <option value={1}>One</option>
             <option value={2}>Two</option>
             <option value={3}>Three</option>
