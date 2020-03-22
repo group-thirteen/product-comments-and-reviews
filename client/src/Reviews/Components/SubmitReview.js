@@ -33,8 +33,8 @@ class SubmitReview extends React.Component {
   }
 
   handleRatingChange(event) {
-
-    this.setState({rating: event.target.value});
+    const starNum = Number(event.target.value)
+    this.setState({rating: starNum});
   }
   handleSubmit(event) {
     this.props.post(this.state);
@@ -58,8 +58,13 @@ class SubmitReview extends React.Component {
             <input type="text" value={this.state.body} onChange={this.handleBodyChange} />
           </label>
           <label className={classnames(styles.label, styles.rating)} >
-            Rating:
-            <input type="text" value={this.state.rating} onChange={this.handleRatingChange} />
+            <select type="text" value={this.state.rating} onChange={this.handleRatingChange} > Rating
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
           </label>
           <input type="submit" value="Submit" />
       </form>

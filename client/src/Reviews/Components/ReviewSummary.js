@@ -14,7 +14,7 @@ const ReviewSummary = (props) => {
   return (
     <div>
       <div className={ styles.infoContainer }>
-        <AverageRating average={average} />
+        <AverageRating average={average} reviewTotal={reviewTotal} />
       </div>  
       <div className={ styles.infoContainer }>
         <StarOverview stars={stars} reviewTotal={reviewTotal} />

@@ -4,7 +4,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import ReviewTitle from '../Components/ReviewTitle'
 import { ProgressPlugin } from 'webpack'
-const testTitle = 'Test Title'
+const testTitle = 'Reviews'
 
 describe('Title', () => {
   const wrapped = shallow(<ReviewTitle title={testTitle} />)
