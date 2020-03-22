@@ -1,4 +1,6 @@
 import React from 'react'
+import styles from './SortReviews.css'
+
 
 class SortReviews extends React.Component {
   constructor(props) {
@@ -6,32 +8,25 @@ class SortReviews extends React.Component {
     this.state = {value: 'sort'};
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({value: event.target.value});
-  }
-
-  handleSubmit(event) {
-    console.log('value in sort sub ', this.state.value)
-    if(this.state.value === 'stars') { this.props.starSortFunc() }
-    if(this.state.value === 'time') { this.props.timeSortFunc() }
-    event.preventDefault();
+    if(event.target.value === 'stars') { this.props.starSortFunc() }
+    if(event.target.value === 'time') { this.props.timeSortFunc() }
+    console.log(this.state.value)
   }
 
   render() {
     return (
-      <form className='sort-form' onSubmit={this.handleSubmit}>
+      <form className={styles['sort-form']}>
         <label>
-          Sort reviews:
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="all">All reviews</option>
+            <option value="all">Sort reviews</option>
             <option value="stars">Star Rating</option>
             <option value="time">Submission Time</option>
           </select>
         </label>
-        <input type="submit" value="Submit" />
       </form>
     );
   }

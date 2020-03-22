@@ -10,6 +10,7 @@ module.exports = {
     path: DIST_DIR
   },
   mode: 'production',
+  devtool: '#eval-source-map',
   module: {
     rules: [
       {
@@ -23,9 +24,20 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        loader: ['style-loader', 'css-loader']
-      }
+        test: [/\.css$/],
+        use: {
+          loader: 'style-loader',
+        },
+      },
+      {
+        test: [/\.css$/],
+        use: {
+          loader: 'css-loader',
+          query: {
+            modules: true,
+          },
+        },
+      },
     ]
   }
 }

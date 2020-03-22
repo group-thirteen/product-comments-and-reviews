@@ -1,4 +1,6 @@
 import React from 'react'
+import classnames from 'classnames'
+import styles from './SubmitReview.css'
 
 class SubmitReview extends React.Component {
   constructor(props) {
@@ -19,22 +21,18 @@ class SubmitReview extends React.Component {
   }
 
   handleUsernameChange(event) {
-    console.log('username:', event.target.value)
     this.setState({username: event.target.value});
   }
 
   handleTitleChange(event) {
-    console.log('title:', event.target.value)
     this.setState({title: event.target.value});
   }
 
   handleBodyChange(event) {
-    console.log('body:', event.target.value)
     this.setState({body: event.target.value});
   }
 
   handleRatingChange(event) {
-    console.log('rating:', event.target.value)
 
     this.setState({rating: event.target.value});
   }
@@ -47,19 +45,19 @@ class SubmitReview extends React.Component {
   render() {
     return (
         <form onSubmit={this.handleSubmit}>
-          <label>
+          <label className={classnames(styles.label, styles.username)} >
             Username:
             <input type="text" value={this.state.username} onChange={this.handleUsernameChange} />
           </label>
-          <label>
+          <label className={classnames(styles.label, styles.title)} >
             Title:
             <input type="text" value={this.state.title} onChange={this.handleTitleChange} />
           </label>
-          <label>
+          <label className={classnames(styles.label, styles.body)} >
             Review:
             <input type="text" value={this.state.body} onChange={this.handleBodyChange} />
           </label>
-          <label>
+          <label className={classnames(styles.label, styles.rating)} >
             Rating:
             <input type="text" value={this.state.rating} onChange={this.handleRatingChange} />
           </label>

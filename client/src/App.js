@@ -1,12 +1,15 @@
 import React from 'react'
+// import CSSModules from 'react-css-modules'
 import { ajax } from 'jquery'
 import Title from './Title'
 import ReviewList from './Reviews/Components/ReviewList.js'
-import AverageRating from './Reviews/Components/AverageRating.js'
 import FilterReviews from './Reviews/Components/FilterReviews.js'
-import StarOverview from './Reviews/Components/StarOverview.js'
-import SubmitReview from './Reviews/Components/SubmitReview.js'
 import SortReviews from './Reviews/Components/SortReviews.js'
+import Info from './Reviews/Components/ReviewSummary.js'
+import FilterContainer from './Reviews/Components/FilterContainer'
+import styles from './App.css'
+import './global.css'
+
 
 class Reviews extends React.Component {
   constructor (props) {
@@ -110,14 +113,27 @@ class Reviews extends React.Component {
 
   render () {
     return (
-      <div>
-        <FilterReviews handleRatingSelection={this.handleRatingSelection}/>
-        <StarOverview stars={this.state.stars} reviewTotal={this.state.reviews.length} />
+      <div className={styles.AppContainer}>
         <Title />
-        <SortReviews starSortFunc={this.sortStarRating} timeSortFunc={this.sortByTime} />
-        {!this.state.showForm && <button onClick={() => (this.setState({showForm: true}))}>Write a Review</button>}
-        {this.state.showForm && <SubmitReview post={ this.post }/>}
-        <AverageRating average={ this.state.average } />
+        <Info 
+          average={ this.state.average } 
+          post={ this.post } 
+          showForm={ this.state.showForm } 
+          onButtonClick={() => (this.setState({showForm: true}))} 
+          stars={this.state.stars} 
+          reviewTotal={this.state.reviews.length} 
+          />
+        <FilterContainer 
+          handleRatingSelection={this.handleRatingSelection} 
+          starSortFunc={this.sortStarRating} 
+          timeSortFunc={this.sortByTime} />
+        {/* <FilterReviews 
+          handleRatingSelection={this.handleRatingSelection}
+          />
+        <SortReviews 
+          starSortFunc={this.sortStarRating} 
+          timeSortFunc={this.sortByTime} 
+          /> */}
         <ReviewList reviews={ this.state.filteredReviews || this.state.reviews } />
       </div>
     )
