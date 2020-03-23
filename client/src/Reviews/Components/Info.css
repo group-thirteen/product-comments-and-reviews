@@ -1,0 +1,12 @@
+
+
+.infoContainer { 
+  width: 33%; 
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+.buttonContainer {
+  width: 74%;
+  margin: auto;
+}

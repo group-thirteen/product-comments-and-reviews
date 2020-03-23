@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Review should render the review title 1`] = `
+<div>
+  <div
+    className="review-title"
+  >
+    Title
+  </div>
+  <div
+    className="review-body"
+  >
+    Body
+  </div>
+  <div
+    className="review-username"
+  >
+    Elias
+  </div>
+  <div
+    className="review-rating"
+  >
+    5
+  </div>
+</div>
+`;
