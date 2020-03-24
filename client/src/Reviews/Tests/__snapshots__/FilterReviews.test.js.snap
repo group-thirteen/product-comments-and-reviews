@@ -5,10 +5,14 @@ exports[`Filter Reviews should render correctly 1`] = `
   className="filter-form"
 >
   <label>
-    Filter rating:
     <select
       onChange={[Function]}
     >
+      <option
+        value={0}
+      >
+        star rating
+      </option>
       <option
         value={1}
       >

@@ -14,7 +14,7 @@ const ReviewSummary = (props) => {
   return (
     <div>
       <div className={ styles.infoContainer }>
-        <AverageRating average={average} />
+        <AverageRating average={average} reviewTotal={reviewTotal} />
       </div>  
       <div className={ styles.infoContainer }>
         <StarOverview stars={stars} reviewTotal={reviewTotal} />
@@ -22,7 +22,7 @@ const ReviewSummary = (props) => {
       <div className={ styles.infoContainer }>
       {!showForm && 
       <div className={styles.buttonContainer}>
-        <button onClick={onButtonClick}>Write a Review</button>
+        <button className={styles.button} onClick={onButtonClick}>Write a Review</button>
       </div> }
         {showForm && <SubmitReview post={post} />}
       </div> 

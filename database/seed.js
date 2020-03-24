@@ -20,7 +20,7 @@ const seed = () => {
   for (let j = 0; j < 20; j++) {
     const newReview = new Review({
       title: faker.random.words(3),
-      username: faker.name.firstName() + faker.name.lastName(),
+      username: `${faker.name.firstName()} ${faker.name.lastName()}`,
       body: faker.random.words(12),
       score: (Math.floor(Math.random() * 5) + 1),
       date: milliDate(1269148117612, Date.now())

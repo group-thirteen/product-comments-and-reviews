@@ -1,15 +1,12 @@
 import React from 'react'
-// import CSSModules from 'react-css-modules'
 import { ajax } from 'jquery'
 import Title from './Title'
 import ReviewList from './Reviews/Components/ReviewList.js'
-import FilterReviews from './Reviews/Components/FilterReviews.js'
-import SortReviews from './Reviews/Components/SortReviews.js'
 import Info from './Reviews/Components/ReviewSummary.js'
 import FilterContainer from './Reviews/Components/FilterContainer'
 import styles from './App.css'
 import './global.css'
-
+import ReactPaginate from 'react-paginate';
 
 class Reviews extends React.Component {
   constructor (props) {
@@ -20,6 +17,11 @@ class Reviews extends React.Component {
       stars: {},
       filteredReviews: null,
       showForm: false,
+      pagination: {
+        offset: 0,
+        perPage: 5
+      }
+
     }
     this.get = this.get.bind(this)
     this.handleNewReviews = this.handleNewReviews.bind(this)
@@ -33,7 +35,7 @@ class Reviews extends React.Component {
   componentDidMount () {
     this.get()
   }
-  
+
   get () {
     ajax({
       method: 'GET',
@@ -49,7 +51,7 @@ class Reviews extends React.Component {
       method: 'POST',
       url: '/reviews',
       data: review,
-      success: () => { this.get() },
+      success: (reviews) => { this.handleNewReviews(reviews) },
       error: () => {console.log('error in the post')}
     })  
   }
@@ -61,9 +63,9 @@ class Reviews extends React.Component {
     })
     const average = sum / reviews.length
     this.getRatingTotal(reviews)
-    this.setState({ average, reviews })
+    this.setState({ average, reviews, pageCount: Math.ceil(reviews.length / this.state.pagination.perPage) }, () => (console.log('this.state' ,this.state)))
     this.sortByTime()
-    
+
   }
 
   getRatingTotal (reviews) {
@@ -79,6 +81,8 @@ class Reviews extends React.Component {
     })
     this.setState({ stars })
   }
+
+
 
   handleRatingSelection (rating) {
     const filtered = this.state.reviews.filter((review) => (
@@ -113,6 +117,13 @@ class Reviews extends React.Component {
     this.setState({ reviews: sorted })
   }
 
+  handlePageClick () {
+    const getPage = (offSet, reviewsPerPage) => {
+      
+    }
+  }  
+
+
   render () {
     return (
       <div className={styles.AppContainer}>
@@ -129,14 +140,20 @@ class Reviews extends React.Component {
           handleRatingSelection={this.handleRatingSelection} 
           starSortFunc={this.sortStarRating} 
           timeSortFunc={this.sortByTime} />
-        {/* <FilterReviews 
-          handleRatingSelection={this.handleRatingSelection}
-          />
-        <SortReviews 
-          starSortFunc={this.sortStarRating} 
-          timeSortFunc={this.sortByTime} 
-          /> */}
         <ReviewList reviews={ this.state.filteredReviews || this.state.reviews } />
+        <ReactPaginate
+          previousLabel={'previous'}
+          nextLabel={'next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={5}
+          marginPagesDisplayed={1}
+          pageRangeDisplayed={2}
+          onPageChange={this.handlePageClick}
+          containerClassName={'pagination'}
+          subContainerClassName={'pages pagination'}
+          activeClassName={'active'}
+        />
       </div>
     )
   }
