@@ -3,6 +3,8 @@ import React from 'react'
 import { shallow, mount } from 'enzyme'
 import App from '../../App.js'
 import { createSerializer } from 'enzyme-to-json'
+import styles from '../Components/components.css'
+// console.log('STYLES',styles())
 
 jest.mock('jquery', () => ({ ajax: jest.fn((options) => {
 
@@ -52,8 +54,9 @@ describe('App', () => {
   })
   it('should sort review by star or date', () => {
     const wrapper = mount(<App />)
-    const form  = wrapper.find('.sort-form')
-    const select = form.find('select')
+    expect(wrapper).toMatchSnapshot()
+    // const form  = wrapper.find('.sort-form')
+    const select = wrapper.find('select')
     select.simulate('change', {target: {value: 'stars'}})
     select.simulate('submit', {})
     expect(wrapper.state().reviews[2].title).toEqual('title2')

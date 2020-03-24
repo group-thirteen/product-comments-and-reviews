@@ -1,12 +1,10 @@
 import React from 'react'
 import styles from './SortReviews.css'
 
-
 class SortReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: 'sort'};
-
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -19,7 +17,7 @@ class SortReviews extends React.Component {
 
   render() {
     return (
-      <form className={styles['sort-form']}>
+      <form className={styles.sortForm }>
         <label>
           <select value={this.state.value} onChange={this.handleChange}>
             <option value="all">Sort reviews</option>
