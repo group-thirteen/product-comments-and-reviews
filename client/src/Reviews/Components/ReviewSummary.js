@@ -22,7 +22,7 @@ const ReviewSummary = (props) => {
       <div className={ styles.infoContainer }>
       {!showForm && 
       <div className={styles.buttonContainer}>
-        <button onClick={onButtonClick}>Write a Review</button>
+        <button className={styles.button} onClick={onButtonClick}>Write a Review</button>
       </div> }
         {showForm && <SubmitReview post={post} />}
       </div> 

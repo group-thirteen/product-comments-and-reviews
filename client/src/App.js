@@ -51,7 +51,7 @@ class Reviews extends React.Component {
       method: 'POST',
       url: '/reviews',
       data: review,
-      success: () => { this.get() },
+      success: (reviews) => { this.handleNewReviews(reviews) },
       error: () => {console.log('error in the post')}
     })  
   }
