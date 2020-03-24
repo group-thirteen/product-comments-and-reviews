@@ -1,5 +1,7 @@
 
 import React from 'react'
+import styles from './FilterContainer.css'
+
 
 class FilterReviews extends React.Component {
   constructor (props) {
@@ -18,7 +20,7 @@ class FilterReviews extends React.Component {
     return (
       <form>
         <label>
-          <select value={this.state.value} onChange={this.handleChange} >
+          <select className={styles.select} value={this.state.value} onChange={this.handleChange} >
             <option value={0}>star rating</option>
             <option value={1}>One</option>
             <option value={2}>Two</option>
