@@ -8,7 +8,7 @@
     "test": "jest",
     "start": "npx nodemon server/index.js",
     "seed": "node ./database/seed.js",
-    "docker": "npm run seed & npm start"
+    "docker": "npm run seed & npm start & npm run build"
   },
   "jest": {
     "snapshotSerializers": [

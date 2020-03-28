@@ -3,12 +3,13 @@ var router = express.Router()
 const db = require('../database/index.js')
 
 router.get('/', (req, res) => {
-  console.log('get in controller')
+  console.log('get in controller', db)
   db.get((err, data) => {
     if (err) {
       console.log('error in the controller')
       res.send(400)
     } else {
+      console.log('success in get')
       res.send(data)
     }
   })

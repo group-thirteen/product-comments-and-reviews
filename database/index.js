@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb//mongo:27017/nordstrom')
+// mongoose.connect('mongodb://localhost/nordstrom')
 // const connection = "mongodb://mongo:27017/mongo-test";
 // const connection = "mongodb://mongo:27017/nordstromPrac";
 
@@ -22,6 +23,7 @@ const handleError = (error) => {
 
 const get = (callback) => {
   const Review = mongoose.model('review', reviewSchema)
+  console.log('DB GET', Review)
   Review.find((err, results) => { callback(err, results) })
 }
 const Review = mongoose.model('Review', reviewSchema)
@@ -37,10 +39,9 @@ const store = (review, callback) => {
     if (err) {
       return handleError(err)
     } else {
-      console.log('success prior to DB store')
       callback(err)
     }
   })
 }
 
-module.exports = { store, get}
+module.exports = { store, get }
