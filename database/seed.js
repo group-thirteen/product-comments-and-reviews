@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/nordstromPrac')
+mongoose.connect('mongodb://mongo:27017/nordstrom')
 const faker = require('faker')
 
 const reviewSchema = mongoose.Schema({
@@ -35,3 +35,4 @@ const seed = () => {
   }
 }
 seed()
+console.log('THE SEED JUST RAN')

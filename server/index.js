@@ -12,12 +12,12 @@ app.use(express.static(path.join(__dirname, '../client/dist')))
 
 app.use('/reviews', Controller)
 
-// app.get('/reviews', function (req, res) {
-//   Controller.get(req, res)
-// })
+app.get('/reviews', function (req, res) {
+  Controller.get(req, res)
+})
 
-// app.post('/reviews', (req, res) => {
-//   Controller.post(req, res)
-// })
+app.post('/reviews', (req, res) => {
+  Controller.post(req, res)
+})
 
 app.listen(port, () => console.log(`Running on port: ${port}`))

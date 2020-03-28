@@ -9,7 +9,6 @@ console.log(styles)
 
 
 const ReviewSummary = (props) => {
-  console.log('props', props)
   const { average, stars, reviewTotal, post, showForm, onButtonClick } = props
   return (
     <div>

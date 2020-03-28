@@ -1,8 +1,12 @@
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/nordstromPrac')
-// const dateFormat = require('dateformat');
-// const now = new Date();
+mongoose.connect('mongodb//mongo:27017/nordstrom')
+// const connection = "mongodb://mongo:27017/mongo-test";
+// const connection = "mongodb://mongo:27017/nordstromPrac";
+
+// const connectDb = () => {
+//   return mongoose.connect(connection);
+// };
 
 var reviewSchema = mongoose.Schema({
   title: String,
@@ -39,4 +43,4 @@ const store = (review, callback) => {
   })
 }
 
-module.exports = { store, get }
+module.exports = { store, get}

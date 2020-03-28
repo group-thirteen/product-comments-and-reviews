@@ -63,7 +63,7 @@ class Reviews extends React.Component {
     })
     const average = sum / reviews.length
     this.getRatingTotal(reviews)
-    this.setState({ average, reviews, pageCount: Math.ceil(reviews.length / this.state.pagination.perPage) }, () => (console.log('this.state' ,this.state)))
+    this.setState({ average, reviews, pageCount: Math.ceil(reviews.length / this.state.pagination.perPage) })
     this.sortByTime()
 
   }
