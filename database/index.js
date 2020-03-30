@@ -1,6 +1,11 @@
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb//mongo:27017/nordstrom')
+mongoose.connect('mongodb://mongo:27017/nordstrom', 
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+  }
+)
 // mongoose.connect('mongodb://localhost/nordstrom')
 // const connection = "mongodb://mongo:27017/mongo-test";
 // const connection = "mongodb://mongo:27017/nordstromPrac";

@@ -1,6 +1,10 @@
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://mongo:27017/nordstrom')
+mongoose.connect('mongodb://mongo:27017/nordstrom', 
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+})
 // mongoose.connect('mongodb://localhost/nordstrom')
 
 const faker = require('faker')

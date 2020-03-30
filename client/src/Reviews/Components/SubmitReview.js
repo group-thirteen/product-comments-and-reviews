@@ -37,8 +37,9 @@ class SubmitReview extends React.Component {
     this.setState({rating: starNum});
   }
   handleSubmit(event) {
-    this.props.post(this.state);
+    console.log(event)
     event.preventDefault();
+    this.props.post(this.state);
   }
 
 

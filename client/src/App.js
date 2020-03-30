@@ -5,7 +5,7 @@ import ReviewList from './Reviews/Components/ReviewList.js'
 import Info from './Reviews/Components/ReviewSummary.js'
 import FilterContainer from './Reviews/Components/FilterContainer'
 import styles from './App.css'
-import './global.css'
+// import './global.css'
 import ReactPaginate from 'react-paginate';
 
 class Reviews extends React.Component {
@@ -82,8 +82,6 @@ class Reviews extends React.Component {
     this.setState({ stars })
   }
 
-
-
   handleRatingSelection (rating) {
     const filtered = this.state.reviews.filter((review) => (
       (rating === 0) || (review.score === rating)
@@ -123,7 +121,6 @@ class Reviews extends React.Component {
     }
   }  
 
-
   render () {
     return (
       <div className={styles.AppContainer}>
@@ -141,7 +138,7 @@ class Reviews extends React.Component {
           starSortFunc={this.sortStarRating} 
           timeSortFunc={this.sortByTime} />
         <ReviewList reviews={ this.state.filteredReviews || this.state.reviews } />
-        <ReactPaginate
+        {/* <ReactPaginate
           previousLabel={'previous'}
           nextLabel={'next'}
           breakLabel={'...'}
@@ -152,7 +149,7 @@ class Reviews extends React.Component {
           onPageChange={this.handlePageClick}
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
-          activeClassName={'active'}
+          activeClassName={'active'} */}
         />
       </div>
     )
