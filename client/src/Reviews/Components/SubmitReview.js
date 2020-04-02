@@ -1,6 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
-import styles from './SubmitReview.css'
+import styles from '../styles/SubmitReview.css'
+import Modal from 'react-modal';
 
 class SubmitReview extends React.Component {
   constructor(props) {
@@ -45,21 +46,29 @@ class SubmitReview extends React.Component {
 
   render() {
     return (
-        <form onSubmit={this.handleSubmit}>
-          <label className={classnames(styles.label, styles.username)} >
-            Username:
-            <input type="text" value={this.state.username} onChange={this.handleUsernameChange} />
+      <div>
+      <Modal 
+        className={styles.myModal}
+        overlayClassName={styles.myOverlay}
+        isOpen={this.props.modalIsOpen}
+        onAfterOpen={this.props.afterOpenModal}
+        onRequestClose={this.props.closeModal}
+        contentLabel="Compose Review"
+      >
+
+        <form className={styles.submitForm} onSubmit={this.handleSubmit} > Submit A Review
+          <label className={styles.label} >
+            <input className={styles.submitInput} type="text" placeholder={'Enter Username'} value={this.state.username} onChange={this.handleUsernameChange} />
           </label>
-          <label className={classnames(styles.label, styles.title)} >
-            Title:
-            <input type="text" value={this.state.title} onChange={this.handleTitleChange} />
+          <label className={styles.label} >
+            <input className={styles.submitInput} type="text" placeholder={'Enter Review Title'} value={this.state.title} onChange={this.handleTitleChange} />
           </label>
-          <label className={classnames(styles.label, styles.body)} >
-            Review:
-            <input type="text" value={this.state.body} onChange={this.handleBodyChange} />
+          <label className={styles.label} >
+            <input className={styles.submitInput} type="text" placeholder={'Enter Review Body'} value={this.state.body} onChange={this.handleBodyChange} />
           </label>
-          <label className={classnames(styles.label, styles.rating)} >
-            <select type="text" value={this.state.rating} onChange={this.handleRatingChange} > Rating
+          <label className={styles.submitInput} >
+            <select type="text" value={this.state.rating} onChange={this.handleRatingChange} > 
+              <option value="placeholder">Select Rating</option>  
               <option value="5">5</option>
               <option value="4">4</option>
               <option value="3">3</option>
@@ -67,10 +76,26 @@ class SubmitReview extends React.Component {
               <option value="1">1</option>
             </select>
           </label>
-          <input type="submit" value="Submit" />
+          <input className={styles.reviewSubmit} type="submit" value="Submit" />
       </form>
+      </Modal>
+    </div>
     );
   }
 }
 
 export default SubmitReview
+
+
+
+
+
+
+
+
+
+
+
+
+
+{/*  */}

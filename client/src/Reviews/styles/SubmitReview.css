@@ -1,0 +1,40 @@
+
+.myModal {
+  position: absolute;
+  top: 200px;
+  left: 200px;
+  right: 200px;
+  bottom: 350px;
+}
+
+.myOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: whitesmoke;
+}
+
+.label {
+  display: inline-block;
+  border: 1px solid black;
+  margin: 0;
+  width: 80%;
+  height: 36px;
+  background: white;
+  text-align: center;
+  color: black;
+  padding: 24px;
+  margin: 18px 0;
+}
+
+.submitInput {
+  width: 100%;
+  height: 36px;
+  
+}
+
+.reviewSubmit {
+  display: inline;
+}

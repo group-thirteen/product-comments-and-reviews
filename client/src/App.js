@@ -2,7 +2,7 @@ import React from 'react'
 import { ajax } from 'jquery'
 import Title from './Title'
 import ReviewList from './Reviews/Components/ReviewList.js'
-import Info from './Reviews/Components/ReviewSummary.js'
+import ReviewSummary from './Reviews/Components/ReviewSummary.js'
 import FilterContainer from './Reviews/Components/FilterContainer'
 import styles from './App.css'
 // import './global.css'
@@ -30,6 +30,9 @@ class Reviews extends React.Component {
     this.handleRatingSelection = this.handleRatingSelection.bind(this)
     this.sortStarRating = this.sortStarRating.bind(this)
     this.sortByTime = this.sortByTime.bind(this)
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+
   }
 
   componentDidMount () {
@@ -115,21 +118,35 @@ class Reviews extends React.Component {
     this.setState({ reviews: sorted })
   }
 
+  openModal () {
+    this.setState({showForm: true})
+    console.log('opened modal')
+  }
+
+  closeModal() {
+    this.setState({showForm: false})
+    console.log('closed')
+
+  }
+
   handlePageClick () {
     const getPage = (offSet, reviewsPerPage) => {
       
     }
-  }  
+  }
 
   render () {
     return (
       <div className={styles.AppContainer}>
         <Title />
-        <Info 
+        <ReviewSummary 
+          modalIsOpen={this.state.showForm}
+          closeModal={this.closeModal}
+          afterModalOpen={this.afterModalOpen}
           average={ this.state.average } 
           post={ this.post } 
           showForm={ this.state.showForm } 
-          onButtonClick={() => (this.setState({showForm: true}))} 
+          onButtonClick={ () => (this.setState({showForm: true}))} 
           stars={this.state.stars} 
           reviewTotal={this.state.reviews.length} 
           />
@@ -150,7 +167,7 @@ class Reviews extends React.Component {
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
           activeClassName={'active'} */}
-        />
+        {/* /> */}
       </div>
     )
   }

@@ -4,9 +4,6 @@ import AverageRating from './AverageRating.js'
 import StarOverview from './StarOverview.js'
 import SubmitReview from './SubmitReview.js'
 import styles from './info.css'
-console.log('the styles',styles)
-
-
 
 const ReviewSummary = (props) => {
   const { average, stars, reviewTotal, post, showForm, onButtonClick } = props
@@ -23,7 +20,12 @@ const ReviewSummary = (props) => {
       <div className={ styles.buttonContainer }>
         <button className={ styles.button } onClick={ onButtonClick }>Write a Review</button>
       </div> }
-        {showForm && <SubmitReview post={post} />}
+        <SubmitReview 
+          modalIsOpen={props.modalIsOpen}
+          post={post} 
+          closeModal={props.closeModal}
+          afterModalOpen={props.afterModalOpen}
+          />
       </div> 
     </div>
   )
