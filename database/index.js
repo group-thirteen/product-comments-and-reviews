@@ -1,8 +1,18 @@
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/nordstromPrac')
-// const dateFormat = require('dateformat');
-// const now = new Date();
+mongoose.connect('mongodb://localhost:27017/nordstrom', 
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true 
+  }
+)
+// mongoose.connect('mongodb://localhost/nordstrom')
+// const connection = "mongodb://mongo:27017/mongo-test";
+// const connection = "mongodb://mongo:27017/nordstromPrac";
+
+// const connectDb = () => {
+//   return mongoose.connect(connection);
+// };
 
 var reviewSchema = mongoose.Schema({
   title: String,
@@ -18,6 +28,7 @@ const handleError = (error) => {
 
 const get = (callback) => {
   const Review = mongoose.model('review', reviewSchema)
+  console.log('DB GET', Review)
   Review.find((err, results) => { callback(err, results) })
 }
 const Review = mongoose.model('Review', reviewSchema)
@@ -33,7 +44,6 @@ const store = (review, callback) => {
     if (err) {
       return handleError(err)
     } else {
-      console.log('success prior to DB store')
       callback(err)
     }
   })

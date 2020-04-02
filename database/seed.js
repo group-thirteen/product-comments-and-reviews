@@ -1,6 +1,12 @@
 
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/nordstromPrac')
+mongoose.connect('mongodb://localhost:27017/nordstrom', 
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
+})
+// mongoose.connect('mongodb://localhost/nordstrom')
+
 const faker = require('faker')
 
 const reviewSchema = mongoose.Schema({
@@ -25,6 +31,7 @@ const seed = () => {
       score: (Math.floor(Math.random() * 5) + 1),
       date: milliDate(1269148117612, Date.now())
     })
+    console.log('newREview:', newReview)
     newReview.save((err) => {
       if (err) {
         console.log('error in SEED DB', err)
@@ -35,3 +42,4 @@ const seed = () => {
   }
 }
 seed()
+console.log('THE SEED JUST RAN')

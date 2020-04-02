@@ -1,5 +1,6 @@
 import React from 'react'
-import styles from './SortReviews.css'
+import styles from './FilterContainer.css'
+
 
 class SortReviews extends React.Component {
   constructor(props) {
@@ -17,9 +18,9 @@ class SortReviews extends React.Component {
 
   render() {
     return (
-      <form className={styles.sortForm }>
+      <form >
         <label>
-          <select value={this.state.value} onChange={this.handleChange}>
+          <select className={styles.select} value={this.state.value} onChange={this.handleChange}>
             <option value="all">Sort reviews</option>
             <option value="stars">Star Rating</option>
             <option value="time">Submission Time</option>

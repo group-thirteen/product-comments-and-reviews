@@ -2,10 +2,10 @@ import React from 'react'
 import { ajax } from 'jquery'
 import Title from './Title'
 import ReviewList from './Reviews/Components/ReviewList.js'
-import Info from './Reviews/Components/ReviewSummary.js'
+import ReviewSummary from './Reviews/Components/ReviewSummary.js'
 import FilterContainer from './Reviews/Components/FilterContainer'
 import styles from './App.css'
-import './global.css'
+// import './global.css'
 import ReactPaginate from 'react-paginate';
 
 class Reviews extends React.Component {
@@ -30,6 +30,9 @@ class Reviews extends React.Component {
     this.handleRatingSelection = this.handleRatingSelection.bind(this)
     this.sortStarRating = this.sortStarRating.bind(this)
     this.sortByTime = this.sortByTime.bind(this)
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+
   }
 
   componentDidMount () {
@@ -63,7 +66,7 @@ class Reviews extends React.Component {
     })
     const average = sum / reviews.length
     this.getRatingTotal(reviews)
-    this.setState({ average, reviews, pageCount: Math.ceil(reviews.length / this.state.pagination.perPage) }, () => (console.log('this.state' ,this.state)))
+    this.setState({ average, reviews, pageCount: Math.ceil(reviews.length / this.state.pagination.perPage) })
     this.sortByTime()
 
   }
@@ -81,8 +84,6 @@ class Reviews extends React.Component {
     })
     this.setState({ stars })
   }
-
-
 
   handleRatingSelection (rating) {
     const filtered = this.state.reviews.filter((review) => (
@@ -117,22 +118,35 @@ class Reviews extends React.Component {
     this.setState({ reviews: sorted })
   }
 
+  openModal () {
+    this.setState({showForm: true})
+    console.log('opened modal')
+  }
+
+  closeModal() {
+    this.setState({showForm: false})
+    console.log('closed')
+
+  }
+
   handlePageClick () {
     const getPage = (offSet, reviewsPerPage) => {
       
     }
-  }  
-
+  }
 
   render () {
     return (
       <div className={styles.AppContainer}>
         <Title />
-        <Info 
+        <ReviewSummary 
+          modalIsOpen={this.state.showForm}
+          closeModal={this.closeModal}
+          afterModalOpen={this.afterModalOpen}
           average={ this.state.average } 
           post={ this.post } 
           showForm={ this.state.showForm } 
-          onButtonClick={() => (this.setState({showForm: true}))} 
+          onButtonClick={ () => (this.setState({showForm: true}))} 
           stars={this.state.stars} 
           reviewTotal={this.state.reviews.length} 
           />
@@ -141,7 +155,7 @@ class Reviews extends React.Component {
           starSortFunc={this.sortStarRating} 
           timeSortFunc={this.sortByTime} />
         <ReviewList reviews={ this.state.filteredReviews || this.state.reviews } />
-        <ReactPaginate
+        {/* <ReactPaginate
           previousLabel={'previous'}
           nextLabel={'next'}
           breakLabel={'...'}
@@ -152,8 +166,8 @@ class Reviews extends React.Component {
           onPageChange={this.handlePageClick}
           containerClassName={'pagination'}
           subContainerClassName={'pages pagination'}
-          activeClassName={'active'}
-        />
+          activeClassName={'active'} */}
+        {/* /> */}
       </div>
     )
   }

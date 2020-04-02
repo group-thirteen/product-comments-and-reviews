@@ -11,7 +11,7 @@ const FilterContainer = (props) => {
       <div className={styles.sortDropdown}>
         <SortReviews starSortFunc={starSortFunc} timeSortFunc={timeSortFunc} />
       </div>
-      <div className={styles.filterDropdown}>
+      <div className={styles.container}>
         <FilterReviews handleRatingSelection={handleRatingSelection} />
       </div>
     </div>

@@ -1,15 +1,11 @@
 import React from 'react'
 // import CSSModules from 'react-css-modules'
-import classnames from 'classnames' 
 import AverageRating from './AverageRating.js'
 import StarOverview from './StarOverview.js'
 import SubmitReview from './SubmitReview.js'
-const styles = require('./info.css')
-console.log(styles)
-
+import styles from './info.css'
 
 const ReviewSummary = (props) => {
-  console.log('props', props)
   const { average, stars, reviewTotal, post, showForm, onButtonClick } = props
   return (
     <div>
@@ -21,10 +17,15 @@ const ReviewSummary = (props) => {
       </div> 
       <div className={ styles.infoContainer }>
       {!showForm && 
-      <div className={styles.buttonContainer}>
-        <button className={styles.button} onClick={onButtonClick}>Write a Review</button>
+      <div className={ styles.buttonContainer }>
+        <button className={ styles.button } onClick={ onButtonClick }>Write a Review</button>
       </div> }
-        {showForm && <SubmitReview post={post} />}
+        <SubmitReview 
+          modalIsOpen={props.modalIsOpen}
+          post={post} 
+          closeModal={props.closeModal}
+          afterModalOpen={props.afterModalOpen}
+          />
       </div> 
     </div>
   )
